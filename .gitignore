@@ -1,0 +1,24 @@
+# Python
+backend/.venv/
+__pycache__/
+*.py[cod]
+
+# Application data — SQLite database (never commit)
+data/
+backend/data/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Environment
+.env
+
+# Command Code agent state (local only)
+.commandcode/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

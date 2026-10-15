@@ -1,0 +1,34 @@
+# TrueNAS SCALE 24.10+ — Apps → Custom App → Install via YAML
+#
+# The image paths below are ready to use (ghcr.io/funnydigital/...) and public.
+#
+# Check these before installing:
+#   /mnt/tank/apps/naijafit/data → your dataset path for the database
+#   SITE_TITLE
+#
+# Create the data folder first (or point at a dataset root).
+# Both services share the app's default network, so the frontend reaches the
+# backend at http://backend:8000 — no network block needed.
+#
+# To update later: push to GitHub, then press Restart on the app
+# (pull_policy: always fetches the newest image).
+
+services:
+  backend:
+    image: ghcr.io/funnydigital/naijafit-backend:latest
+    pull_policy: always
+    environment:
+      - DATA_DIR=/app/data
+      - SITE_TITLE=NaijaFit
+    volumes:
+      - /mnt/tank/apps/naijafit/data:/app/data
+    restart: unless-stopped
+
+  frontend:
+    image: ghcr.io/funnydigital/naijafit-frontend:latest
+    pull_policy: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

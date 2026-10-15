@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: naijafit-backend
+    environment:
+      - DATA_DIR=/app/data
+      - SITE_TITLE=${SITE_TITLE:-NaijaFit}
+    volumes:
+      - ${DATA_DIR:-./data}:/app/data
+    restart: unless-stopped
+    networks:
+      - naijafit-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: naijafit-frontend
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - naijafit-net
+
+networks:
+  naijafit-net:
+    driver: bridge
