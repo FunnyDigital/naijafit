@@ -11,7 +11,14 @@ CATALOG_VERSION = "1"
 
 
 def _load(filename: str) -> list[dict]:
-    with open(DATA_DIR / filename, encoding="utf-8") as handle:
+    path = DATA_DIR / filename
+    if not path.is_file():
+        raise RuntimeError(
+            f"Catalog file is missing: {path}. "
+            "The image was built without app/data — check that backend/.dockerignore "
+            "does not exclude it."
+        )
+    with open(path, encoding="utf-8") as handle:
         return json.load(handle)
 
 
