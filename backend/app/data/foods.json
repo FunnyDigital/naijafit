@@ -1,0 +1,1779 @@
+[
+  {
+    "name": "Akara (bean cakes)",
+    "name_local": "Akara",
+    "category": "breakfast",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "3 cakes (90 g)",
+    "serving_grams": 90,
+    "kcal": 195,
+    "protein_g": 9.5,
+    "carbs_g": 15,
+    "fat_g": 10.5,
+    "fiber_g": 4,
+    "sodium_mg": 210,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "vegan"
+    ],
+    "notes": "Deep-fried peeled black-eyed bean batter."
+  },
+  {
+    "name": "Moi Moi",
+    "name_local": "Moi Moi",
+    "category": "breakfast",
+    "meal_slots": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 wrap (150 g)",
+    "serving_grams": 150,
+    "kcal": 210,
+    "protein_g": 11,
+    "carbs_g": 20,
+    "fat_g": 9,
+    "fiber_g": 5,
+    "sodium_mg": 320,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "vegan"
+    ],
+    "notes": "Steamed bean pudding; fish or egg can be added."
+  },
+  {
+    "name": "Ogi / Pap",
+    "name_local": "Akamu",
+    "category": "breakfast",
+    "meal_slots": [
+      "breakfast"
+    ],
+    "serving_desc": "1 cup (240 g)",
+    "serving_grams": 240,
+    "kcal": 130,
+    "protein_g": 2.5,
+    "carbs_g": 29,
+    "fat_g": 0.5,
+    "fiber_g": 1,
+    "sodium_mg": 5,
+    "tags": [
+      "gluten_free",
+      "light",
+      "vegan"
+    ],
+    "notes": "Fermented corn pudding; usually taken with milk and sugar."
+  },
+  {
+    "name": "Boiled yam & egg sauce",
+    "name_local": "Yam & egg",
+    "category": "breakfast",
+    "meal_slots": [
+      "breakfast",
+      "lunch"
+    ],
+    "serving_desc": "2 slices yam + 1 egg (250 g)",
+    "serving_grams": 250,
+    "kcal": 340,
+    "protein_g": 11,
+    "carbs_g": 52,
+    "fat_g": 9,
+    "fiber_g": 4,
+    "sodium_mg": 300,
+    "tags": [
+      "gluten_free"
+    ],
+    "notes": "Boiled white yam with a peppered tomato and egg sauce."
+  },
+  {
+    "name": "Fried plantain",
+    "name_local": "Dodo",
+    "category": "side",
+    "meal_slots": [
+      "breakfast",
+      "lunch",
+      "dinner",
+      "snack"
+    ],
+    "serving_desc": "1 cup (120 g)",
+    "serving_grams": 120,
+    "kcal": 280,
+    "protein_g": 1.5,
+    "carbs_g": 36,
+    "fat_g": 14,
+    "fiber_g": 3,
+    "sodium_mg": 60,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Ripe plantain fried in vegetable oil."
+  },
+  {
+    "name": "Boiled plantain",
+    "name_local": "Plantain",
+    "category": "side",
+    "meal_slots": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 medium (180 g)",
+    "serving_grams": 180,
+    "kcal": 220,
+    "protein_g": 2,
+    "carbs_g": 55,
+    "fat_g": 0.4,
+    "fiber_g": 4,
+    "sodium_mg": 8,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Unripe or ripe plantain boiled; a low-fat starchy side."
+  },
+  {
+    "name": "Agege bread",
+    "name_local": "Bread",
+    "category": "breakfast",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "2 slices (80 g)",
+    "serving_grams": 80,
+    "kcal": 210,
+    "protein_g": 6,
+    "carbs_g": 40,
+    "fat_g": 3,
+    "fiber_g": 2,
+    "sodium_mg": 300,
+    "tags": [
+      "gluten"
+    ],
+    "notes": "Soft Nigerian loaf; often eaten with beans or egg."
+  },
+  {
+    "name": "Kunu (millet drink)",
+    "name_local": "Kunu",
+    "category": "drink",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "1 cup (240 ml)",
+    "serving_grams": 240,
+    "kcal": 110,
+    "protein_g": 2,
+    "carbs_g": 24,
+    "fat_g": 0.6,
+    "fiber_g": 1,
+    "sodium_mg": 20,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Millet or sorghum drink, lightly sweetened."
+  },
+  {
+    "name": "Fura da nono",
+    "name_local": "Fura da nono",
+    "category": "breakfast",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "1 cup (250 ml)",
+    "serving_grams": 250,
+    "kcal": 220,
+    "protein_g": 8,
+    "carbs_g": 30,
+    "fat_g": 7,
+    "fiber_g": 2,
+    "sodium_mg": 90,
+    "tags": [
+      "dairy"
+    ],
+    "notes": "Millet balls in fermented milk; a northern favourite."
+  },
+  {
+    "name": "Roasted maize & pear",
+    "name_local": "Agbado & ube",
+    "category": "breakfast",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "1 cob + 1 pear (250 g)",
+    "serving_grams": 250,
+    "kcal": 250,
+    "protein_g": 6,
+    "carbs_g": 48,
+    "fat_g": 5,
+    "fiber_g": 6,
+    "sodium_mg": 15,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Roasted corn with African pear."
+  },
+  {
+    "name": "Ojojo",
+    "name_local": "Ojojo",
+    "category": "breakfast",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "4 pieces (100 g)",
+    "serving_grams": 100,
+    "kcal": 230,
+    "protein_g": 3,
+    "carbs_g": 28,
+    "fat_g": 12,
+    "fiber_g": 3,
+    "sodium_mg": 180,
+    "tags": [
+      "vegan"
+    ],
+    "notes": "Water-yam fritter, a Lagos breakfast."
+  },
+  {
+    "name": "Boiled sweet potato",
+    "name_local": "Sweet potato",
+    "category": "side",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "1 medium (180 g)",
+    "serving_grams": 180,
+    "kcal": 160,
+    "protein_g": 3,
+    "carbs_g": 37,
+    "fat_g": 0.3,
+    "fiber_g": 5,
+    "sodium_mg": 60,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Boiled or roasted; naturally sweet."
+  },
+  {
+    "name": "Milo drink",
+    "name_local": "Milo",
+    "category": "drink",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "1 cup (240 ml)",
+    "serving_grams": 240,
+    "kcal": 120,
+    "protein_g": 3,
+    "carbs_g": 20,
+    "fat_g": 2,
+    "fiber_g": 1,
+    "sodium_mg": 60,
+    "tags": [
+      "dairy"
+    ],
+    "notes": "Chocolate malt drink, made with water or milk."
+  },
+  {
+    "name": "Eba (garri)",
+    "name_local": "Eba",
+    "category": "swallow",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 wrap (200 g)",
+    "serving_grams": 200,
+    "kcal": 320,
+    "protein_g": 2,
+    "carbs_g": 76,
+    "fat_g": 0.5,
+    "fiber_g": 3,
+    "sodium_mg": 10,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Cassava dough; eat with any soup."
+  },
+  {
+    "name": "Pounded yam",
+    "name_local": "Iyan",
+    "category": "swallow",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 wrap (220 g)",
+    "serving_grams": 220,
+    "kcal": 380,
+    "protein_g": 3,
+    "carbs_g": 88,
+    "fat_g": 0.6,
+    "fiber_g": 4,
+    "sodium_mg": 8,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Smooth pounded white yam; pairs with egusi or efo."
+  },
+  {
+    "name": "Semo (semolina)",
+    "name_local": "Semo",
+    "category": "swallow",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 wrap (200 g)",
+    "serving_grams": 200,
+    "kcal": 340,
+    "protein_g": 4,
+    "carbs_g": 75,
+    "fat_g": 1,
+    "fiber_g": 2,
+    "sodium_mg": 10,
+    "tags": [
+      "gluten",
+      "vegan"
+    ],
+    "notes": "Semolina swallow, lighter than pounded yam."
+  },
+  {
+    "name": "Amala",
+    "name_local": "Amala",
+    "category": "swallow",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 wrap (200 g)",
+    "serving_grams": 200,
+    "kcal": 300,
+    "protein_g": 3,
+    "carbs_g": 70,
+    "fat_g": 0.6,
+    "fiber_g": 5,
+    "sodium_mg": 8,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Yam-flour swallow; classic with gbegiri and ewedu."
+  },
+  {
+    "name": "Fufu (cassava)",
+    "name_local": "Fufu",
+    "category": "swallow",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 wrap (200 g)",
+    "serving_grams": 200,
+    "kcal": 250,
+    "protein_g": 1,
+    "carbs_g": 61,
+    "fat_g": 0.2,
+    "fiber_g": 2,
+    "sodium_mg": 6,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Fermented cassava swallow."
+  },
+  {
+    "name": "Tuwo shinkafa",
+    "name_local": "Tuwo",
+    "category": "swallow",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 wrap (200 g)",
+    "serving_grams": 200,
+    "kcal": 300,
+    "protein_g": 5,
+    "carbs_g": 66,
+    "fat_g": 0.7,
+    "fiber_g": 2,
+    "sodium_mg": 12,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Rice swallow from the north; served with miyan kuka."
+  },
+  {
+    "name": "Wheat swallow",
+    "name_local": "Wheat",
+    "category": "swallow",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 wrap (200 g)",
+    "serving_grams": 200,
+    "kcal": 290,
+    "protein_g": 8,
+    "carbs_g": 60,
+    "fat_g": 1.5,
+    "fiber_g": 5,
+    "sodium_mg": 10,
+    "tags": [
+      "gluten",
+      "high_fiber",
+      "vegan"
+    ],
+    "notes": "Wholewheat swallow, a lower-GI option."
+  },
+  {
+    "name": "Egusi soup",
+    "name_local": "Egusi",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 380,
+    "protein_g": 18,
+    "carbs_g": 12,
+    "fat_g": 30,
+    "fiber_g": 5,
+    "sodium_mg": 700,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Melon-seed soup with leafy greens and assorted meat."
+  },
+  {
+    "name": "Efo riro",
+    "name_local": "Efo riro",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (240 g)",
+    "serving_grams": 240,
+    "kcal": 260,
+    "protein_g": 16,
+    "carbs_g": 12,
+    "fat_g": 17,
+    "fiber_g": 6,
+    "sodium_mg": 650,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Yoruba spinach stew with pepper and assorted meat."
+  },
+  {
+    "name": "Okra soup",
+    "name_local": "Ila",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (240 g)",
+    "serving_grams": 240,
+    "kcal": 180,
+    "protein_g": 12,
+    "carbs_g": 12,
+    "fat_g": 9,
+    "fiber_g": 5,
+    "sodium_mg": 600,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_fat"
+    ],
+    "notes": "Drawy okra soup; light and filling."
+  },
+  {
+    "name": "Ogbono soup",
+    "name_local": "Ogbono",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 320,
+    "protein_g": 15,
+    "carbs_g": 9,
+    "fat_g": 26,
+    "fiber_g": 4,
+    "sodium_mg": 620,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Wild mango seed soup; famously drawy."
+  },
+  {
+    "name": "Bitterleaf soup",
+    "name_local": "Ofe onugbu",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 240,
+    "protein_g": 14,
+    "carbs_g": 10,
+    "fat_g": 16,
+    "fiber_g": 5,
+    "sodium_mg": 600,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Washed bitterleaf soup with cocoyam thickener."
+  },
+  {
+    "name": "Oha soup",
+    "name_local": "Ofe oha",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 230,
+    "protein_g": 13,
+    "carbs_g": 11,
+    "fat_g": 15,
+    "fiber_g": 5,
+    "sodium_mg": 590,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Eastern soup made with oha leaves."
+  },
+  {
+    "name": "Afang soup",
+    "name_local": "Afang",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 250,
+    "protein_g": 15,
+    "carbs_g": 10,
+    "fat_g": 17,
+    "fiber_g": 6,
+    "sodium_mg": 610,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Afang leaves with waterleaf; an Efik classic."
+  },
+  {
+    "name": "Edikang ikong",
+    "name_local": "Edikang ikong",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 240,
+    "protein_g": 15,
+    "carbs_g": 9,
+    "fat_g": 16,
+    "fiber_g": 6,
+    "sodium_mg": 600,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Rich vegetable soup from Cross River."
+  },
+  {
+    "name": "Ofe nsala (white soup)",
+    "name_local": "Nsala",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 220,
+    "protein_g": 18,
+    "carbs_g": 6,
+    "fat_g": 14,
+    "fiber_g": 3,
+    "sodium_mg": 580,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Peppery catfish soup with utazi leaves."
+  },
+  {
+    "name": "Banga soup",
+    "name_local": "Ofe banga",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 340,
+    "protein_g": 12,
+    "carbs_g": 8,
+    "fat_g": 30,
+    "fiber_g": 3,
+    "sodium_mg": 560,
+    "tags": [
+      "gluten_free"
+    ],
+    "notes": "Palm-fruit soup, usually with starch or eba."
+  },
+  {
+    "name": "Miyan taushe",
+    "name_local": "Miyan taushe",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 330,
+    "protein_g": 14,
+    "carbs_g": 14,
+    "fat_g": 25,
+    "fiber_g": 5,
+    "sodium_mg": 570,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Northern groundnut and pumpkin soup."
+  },
+  {
+    "name": "Miyan kuka",
+    "name_local": "Miyan kuka",
+    "category": "soup",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 250,
+    "protein_g": 13,
+    "carbs_g": 12,
+    "fat_g": 17,
+    "fiber_g": 4,
+    "sodium_mg": 580,
+    "tags": [
+      "gluten_free",
+      "high_protein"
+    ],
+    "notes": "Baobab-leaf soup; served with tuwo."
+  },
+  {
+    "name": "Obe ata (tomato stew)",
+    "name_local": "Obe ata",
+    "category": "stew",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 serving (200 g)",
+    "serving_grams": 200,
+    "kcal": 190,
+    "protein_g": 4,
+    "carbs_g": 14,
+    "fat_g": 13,
+    "fiber_g": 3,
+    "sodium_mg": 500,
+    "tags": [
+      "gluten_free",
+      "low_carb",
+      "vegan"
+    ],
+    "notes": "Everyday pepper and tomato stew base."
+  },
+  {
+    "name": "Ayamase (ofada stew)",
+    "name_local": "Ayamase",
+    "category": "stew",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 serving (200 g)",
+    "serving_grams": 200,
+    "kcal": 280,
+    "protein_g": 6,
+    "carbs_g": 10,
+    "fat_g": 24,
+    "fiber_g": 4,
+    "sodium_mg": 520,
+    "tags": [
+      "gluten_free",
+      "low_carb"
+    ],
+    "notes": "Green bell-pepper stew with assorted meat."
+  },
+  {
+    "name": "Ewa agoyin",
+    "name_local": "Ewa agoyin",
+    "category": "porridge",
+    "meal_slots": [
+      "lunch",
+      "dinner",
+      "breakfast"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 320,
+    "protein_g": 14,
+    "carbs_g": 40,
+    "fat_g": 12,
+    "fiber_g": 10,
+    "sodium_mg": 400,
+    "tags": [
+      "high_fiber",
+      "high_protein",
+      "vegan"
+    ],
+    "notes": "Mashed beans with a smoky pepper sauce."
+  },
+  {
+    "name": "Beans porridge",
+    "name_local": "Ewa riro",
+    "category": "porridge",
+    "meal_slots": [
+      "lunch",
+      "dinner",
+      "breakfast"
+    ],
+    "serving_desc": "1 cup (250 g)",
+    "serving_grams": 250,
+    "kcal": 260,
+    "protein_g": 14,
+    "carbs_g": 40,
+    "fat_g": 5,
+    "fiber_g": 11,
+    "sodium_mg": 380,
+    "tags": [
+      "high_fiber",
+      "high_protein",
+      "vegan"
+    ],
+    "notes": "Beans cooked down with pepper, palm oil and onions."
+  },
+  {
+    "name": "Jollof rice",
+    "name_local": "Jollof",
+    "category": "rice",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (200 g)",
+    "serving_grams": 200,
+    "kcal": 300,
+    "protein_g": 7,
+    "carbs_g": 52,
+    "fat_g": 8,
+    "fiber_g": 3,
+    "sodium_mg": 520,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Party rice cooked in a peppery tomato base."
+  },
+  {
+    "name": "Fried rice",
+    "name_local": "Fried rice",
+    "category": "rice",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (200 g)",
+    "serving_grams": 200,
+    "kcal": 320,
+    "protein_g": 9,
+    "carbs_g": 50,
+    "fat_g": 10,
+    "fiber_g": 3,
+    "sodium_mg": 560,
+    "tags": [
+      "gluten_free"
+    ],
+    "notes": "Rice with mixed vegetables and liver."
+  },
+  {
+    "name": "Ofada rice",
+    "name_local": "Ofada",
+    "category": "rice",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (200 g)",
+    "serving_grams": 200,
+    "kcal": 290,
+    "protein_g": 7,
+    "carbs_g": 58,
+    "fat_g": 3,
+    "fiber_g": 4,
+    "sodium_mg": 12,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Local unpolished rice; served with ayamase."
+  },
+  {
+    "name": "White rice & stew",
+    "name_local": "Rice & stew",
+    "category": "rice",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup rice + stew (300 g)",
+    "serving_grams": 300,
+    "kcal": 380,
+    "protein_g": 8,
+    "carbs_g": 60,
+    "fat_g": 12,
+    "fiber_g": 3,
+    "sodium_mg": 520,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Plain rice with tomato stew."
+  },
+  {
+    "name": "Coconut rice",
+    "name_local": "Coconut rice",
+    "category": "rice",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (200 g)",
+    "serving_grams": 200,
+    "kcal": 330,
+    "protein_g": 6,
+    "carbs_g": 50,
+    "fat_g": 12,
+    "fiber_g": 3,
+    "sodium_mg": 480,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Rice simmered in coconut milk."
+  },
+  {
+    "name": "Rice & beans",
+    "name_local": "Rice & beans",
+    "category": "rice",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (220 g)",
+    "serving_grams": 220,
+    "kcal": 310,
+    "protein_g": 11,
+    "carbs_g": 55,
+    "fat_g": 6,
+    "fiber_g": 7,
+    "sodium_mg": 420,
+    "tags": [
+      "high_fiber",
+      "high_protein",
+      "vegan"
+    ],
+    "notes": "Half rice, half beans — a filling staple."
+  },
+  {
+    "name": "Suya (beef skewers)",
+    "name_local": "Suya",
+    "category": "protein",
+    "meal_slots": [
+      "lunch",
+      "dinner",
+      "snack"
+    ],
+    "serving_desc": "2 skewers (120 g)",
+    "serving_grams": 120,
+    "kcal": 280,
+    "protein_g": 26,
+    "carbs_g": 6,
+    "fat_g": 17,
+    "fiber_g": 1,
+    "sodium_mg": 640,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Grilled spiced beef with yaji pepper rub."
+  },
+  {
+    "name": "Grilled tilapia",
+    "name_local": "Grilled fish",
+    "category": "protein",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 medium fish (200 g)",
+    "serving_grams": 200,
+    "kcal": 240,
+    "protein_g": 40,
+    "carbs_g": 0,
+    "fat_g": 9,
+    "fiber_g": 0,
+    "sodium_mg": 300,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Whole fish grilled with pepper and onions."
+  },
+  {
+    "name": "Goat pepper soup",
+    "name_local": "Goat pepper soup",
+    "category": "protein",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 bowl (300 g)",
+    "serving_grams": 300,
+    "kcal": 260,
+    "protein_g": 30,
+    "carbs_g": 5,
+    "fat_g": 13,
+    "fiber_g": 2,
+    "sodium_mg": 700,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Light, peppery broth — good for a low-calorie dinner."
+  },
+  {
+    "name": "Chicken pepper soup",
+    "name_local": "Chicken pepper soup",
+    "category": "protein",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 bowl (300 g)",
+    "serving_grams": 300,
+    "kcal": 220,
+    "protein_g": 28,
+    "carbs_g": 4,
+    "fat_g": 10,
+    "fiber_g": 1,
+    "sodium_mg": 680,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Chicken in a spiced pepper broth."
+  },
+  {
+    "name": "Catfish pepper soup",
+    "name_local": "Catfish pepper soup",
+    "category": "protein",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 bowl (300 g)",
+    "serving_grams": 300,
+    "kcal": 210,
+    "protein_g": 30,
+    "carbs_g": 4,
+    "fat_g": 9,
+    "fiber_g": 1,
+    "sodium_mg": 690,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Point-and-kill catfish pepper soup."
+  },
+  {
+    "name": "Asun (spicy goat)",
+    "name_local": "Asun",
+    "category": "protein",
+    "meal_slots": [
+      "dinner",
+      "snack"
+    ],
+    "serving_desc": "1 serving (150 g)",
+    "serving_grams": 150,
+    "kcal": 320,
+    "protein_g": 28,
+    "carbs_g": 4,
+    "fat_g": 22,
+    "fiber_g": 1,
+    "sodium_mg": 620,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Smoked goat meat tossed in pepper and onions."
+  },
+  {
+    "name": "Peppered snail",
+    "name_local": "Peppered snail",
+    "category": "protein",
+    "meal_slots": [
+      "dinner",
+      "snack"
+    ],
+    "serving_desc": "1 serving (150 g)",
+    "serving_grams": 150,
+    "kcal": 200,
+    "protein_g": 24,
+    "carbs_g": 6,
+    "fat_g": 9,
+    "fiber_g": 1,
+    "sodium_mg": 600,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Giant African land snails in pepper sauce."
+  },
+  {
+    "name": "Awara (tofu)",
+    "name_local": "Awara",
+    "category": "protein",
+    "meal_slots": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 serving (120 g)",
+    "serving_grams": 120,
+    "kcal": 190,
+    "protein_g": 15,
+    "carbs_g": 5,
+    "fat_g": 12,
+    "fiber_g": 2,
+    "sodium_mg": 15,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb",
+      "vegan"
+    ],
+    "notes": "Fried bean curd; the soy version of tofu."
+  },
+  {
+    "name": "Boiled egg",
+    "name_local": "Egg",
+    "category": "protein",
+    "meal_slots": [
+      "breakfast",
+      "snack",
+      "lunch"
+    ],
+    "serving_desc": "1 large (50 g)",
+    "serving_grams": 50,
+    "kcal": 78,
+    "protein_g": 6.3,
+    "carbs_g": 0.6,
+    "fat_g": 5.3,
+    "fiber_g": 0,
+    "sodium_mg": 62,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Cheap, complete protein."
+  },
+  {
+    "name": "Roast chicken",
+    "name_local": "Roast chicken",
+    "category": "protein",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 serving, skinless (150 g)",
+    "serving_grams": 150,
+    "kcal": 250,
+    "protein_g": 35,
+    "carbs_g": 0,
+    "fat_g": 11,
+    "fiber_g": 0,
+    "sodium_mg": 320,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Oven-roasted chicken."
+  },
+  {
+    "name": "Grilled chicken",
+    "name_local": "Grilled chicken",
+    "category": "protein",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 serving (150 g)",
+    "serving_grams": 150,
+    "kcal": 260,
+    "protein_g": 36,
+    "carbs_g": 1,
+    "fat_g": 12,
+    "fiber_g": 0,
+    "sodium_mg": 340,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Grilled or barbecue chicken."
+  },
+  {
+    "name": "Ponmo (cow skin)",
+    "name_local": "Ponmo",
+    "category": "protein",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 serving (120 g)",
+    "serving_grams": 120,
+    "kcal": 130,
+    "protein_g": 20,
+    "carbs_g": 0,
+    "fat_g": 5,
+    "fiber_g": 0,
+    "sodium_mg": 300,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Boiled cow skin, mostly collagen."
+  },
+  {
+    "name": "Sardines in tomato sauce",
+    "name_local": "Sardine",
+    "category": "protein",
+    "meal_slots": [
+      "breakfast",
+      "lunch",
+      "snack"
+    ],
+    "serving_desc": "1 tin (90 g)",
+    "serving_grams": 90,
+    "kcal": 190,
+    "protein_g": 22,
+    "carbs_g": 0,
+    "fat_g": 11,
+    "fiber_g": 0,
+    "sodium_mg": 400,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb"
+    ],
+    "notes": "Tinned sardines; good with bread or alone."
+  },
+  {
+    "name": "Boiled beans",
+    "name_local": "Ewa",
+    "category": "side",
+    "meal_slots": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (180 g)",
+    "serving_grams": 180,
+    "kcal": 220,
+    "protein_g": 15,
+    "carbs_g": 40,
+    "fat_g": 1,
+    "fiber_g": 15,
+    "sodium_mg": 12,
+    "tags": [
+      "high_fiber",
+      "high_protein",
+      "vegan"
+    ],
+    "notes": "Plain boiled honey beans."
+  },
+  {
+    "name": "Boiled greens",
+    "name_local": "Efo / ugwu",
+    "category": "side",
+    "meal_slots": [
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (150 g)",
+    "serving_grams": 150,
+    "kcal": 70,
+    "protein_g": 5,
+    "carbs_g": 7,
+    "fat_g": 3,
+    "fiber_g": 4,
+    "sodium_mg": 40,
+    "tags": [
+      "gluten_free",
+      "low_carb",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Fluted pumpkin or spinach leaves, lightly cooked."
+  },
+  {
+    "name": "Vegetable salad",
+    "name_local": "Salad",
+    "category": "side",
+    "meal_slots": [
+      "lunch",
+      "dinner",
+      "snack"
+    ],
+    "serving_desc": "1 bowl (200 g)",
+    "serving_grams": 200,
+    "kcal": 90,
+    "protein_g": 3,
+    "carbs_g": 12,
+    "fat_g": 3,
+    "fiber_g": 4,
+    "sodium_mg": 120,
+    "tags": [
+      "gluten_free",
+      "low_carb",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Cabbage, carrot, cucumber and tomato."
+  },
+  {
+    "name": "Chin chin",
+    "name_local": "Chin chin",
+    "category": "snack",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "1 handful (40 g)",
+    "serving_grams": 40,
+    "kcal": 200,
+    "protein_g": 4,
+    "carbs_g": 26,
+    "fat_g": 9,
+    "fiber_g": 1,
+    "sodium_mg": 140,
+    "tags": [
+      "gluten"
+    ],
+    "notes": "Fried sweet dough cubes."
+  },
+  {
+    "name": "Plantain chips",
+    "name_local": "Plantain chips",
+    "category": "snack",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "1 pack (50 g)",
+    "serving_grams": 50,
+    "kcal": 270,
+    "protein_g": 1.5,
+    "carbs_g": 32,
+    "fat_g": 15,
+    "fiber_g": 3,
+    "sodium_mg": 180,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Thin fried plantain crisps."
+  },
+  {
+    "name": "Roasted groundnut",
+    "name_local": "Groundnut",
+    "category": "snack",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "1 handful (30 g)",
+    "serving_grams": 30,
+    "kcal": 170,
+    "protein_g": 8,
+    "carbs_g": 5,
+    "fat_g": 14,
+    "fiber_g": 3,
+    "sodium_mg": 5,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "low_carb",
+      "vegan"
+    ],
+    "notes": "Dry-roasted peanuts."
+  },
+  {
+    "name": "Kuli kuli",
+    "name_local": "Kuli kuli",
+    "category": "snack",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "2 pieces (30 g)",
+    "serving_grams": 30,
+    "kcal": 160,
+    "protein_g": 7,
+    "carbs_g": 8,
+    "fat_g": 12,
+    "fiber_g": 2,
+    "sodium_mg": 130,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "vegan"
+    ],
+    "notes": "Crunchy groundnut snack."
+  },
+  {
+    "name": "Puff puff",
+    "name_local": "Puff puff",
+    "category": "snack",
+    "meal_slots": [
+      "snack",
+      "breakfast"
+    ],
+    "serving_desc": "4 pieces (90 g)",
+    "serving_grams": 90,
+    "kcal": 240,
+    "protein_g": 4,
+    "carbs_g": 34,
+    "fat_g": 10,
+    "fiber_g": 1,
+    "sodium_mg": 120,
+    "tags": [
+      "gluten",
+      "vegan"
+    ],
+    "notes": "Fried sweet dough balls."
+  },
+  {
+    "name": "Buns",
+    "name_local": "Buns",
+    "category": "snack",
+    "meal_slots": [
+      "snack",
+      "breakfast"
+    ],
+    "serving_desc": "3 pieces (80 g)",
+    "serving_grams": 80,
+    "kcal": 230,
+    "protein_g": 4,
+    "carbs_g": 32,
+    "fat_g": 10,
+    "fiber_g": 1,
+    "sodium_mg": 110,
+    "tags": [
+      "gluten",
+      "vegan"
+    ],
+    "notes": "Fried dough balls, denser than puff puff."
+  },
+  {
+    "name": "Mango",
+    "name_local": "Mango",
+    "category": "fruit",
+    "meal_slots": [
+      "snack",
+      "breakfast"
+    ],
+    "serving_desc": "1 medium (200 g)",
+    "serving_grams": 200,
+    "kcal": 120,
+    "protein_g": 1.6,
+    "carbs_g": 30,
+    "fat_g": 0.8,
+    "fiber_g": 3.2,
+    "sodium_mg": 2,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Sweet seasonal fruit."
+  },
+  {
+    "name": "Banana",
+    "name_local": "Banana",
+    "category": "fruit",
+    "meal_slots": [
+      "snack",
+      "breakfast"
+    ],
+    "serving_desc": "1 medium (120 g)",
+    "serving_grams": 120,
+    "kcal": 105,
+    "protein_g": 1.3,
+    "carbs_g": 27,
+    "fat_g": 0.4,
+    "fiber_g": 3,
+    "sodium_mg": 1,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Handy pre-workout carbohydrate."
+  },
+  {
+    "name": "Watermelon",
+    "name_local": "Watermelon",
+    "category": "fruit",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "2 cups (300 g)",
+    "serving_grams": 300,
+    "kcal": 90,
+    "protein_g": 1.8,
+    "carbs_g": 23,
+    "fat_g": 0.5,
+    "fiber_g": 1.2,
+    "sodium_mg": 3,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Very hydrating."
+  },
+  {
+    "name": "Pineapple",
+    "name_local": "Pineapple",
+    "category": "fruit",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "1 cup (165 g)",
+    "serving_grams": 165,
+    "kcal": 82,
+    "protein_g": 0.9,
+    "carbs_g": 22,
+    "fat_g": 0.2,
+    "fiber_g": 2.3,
+    "sodium_mg": 2,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Sweet and tangy."
+  },
+  {
+    "name": "Pawpaw",
+    "name_local": "Pawpaw",
+    "category": "fruit",
+    "meal_slots": [
+      "snack",
+      "breakfast"
+    ],
+    "serving_desc": "1 cup (145 g)",
+    "serving_grams": 145,
+    "kcal": 62,
+    "protein_g": 0.7,
+    "carbs_g": 16,
+    "fat_g": 0.4,
+    "fiber_g": 2.5,
+    "sodium_mg": 12,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Papaya; gentle on the stomach."
+  },
+  {
+    "name": "Coconut",
+    "name_local": "Coconut",
+    "category": "fruit",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "1 piece (60 g)",
+    "serving_grams": 60,
+    "kcal": 210,
+    "protein_g": 2,
+    "carbs_g": 9,
+    "fat_g": 20,
+    "fiber_g": 5,
+    "sodium_mg": 12,
+    "tags": [
+      "gluten_free",
+      "low_carb",
+      "vegan"
+    ],
+    "notes": "Fresh coconut flesh."
+  },
+  {
+    "name": "Garden egg",
+    "name_local": "Garden egg",
+    "category": "fruit",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "2 medium (150 g)",
+    "serving_grams": 150,
+    "kcal": 50,
+    "protein_g": 1.2,
+    "carbs_g": 11,
+    "fat_g": 0.3,
+    "fiber_g": 4.5,
+    "sodium_mg": 4,
+    "tags": [
+      "gluten_free",
+      "low_carb",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Eaten raw with groundnut or as sauce."
+  },
+  {
+    "name": "Orange",
+    "name_local": "Orange",
+    "category": "fruit",
+    "meal_slots": [
+      "snack",
+      "breakfast"
+    ],
+    "serving_desc": "1 medium (130 g)",
+    "serving_grams": 130,
+    "kcal": 62,
+    "protein_g": 1.2,
+    "carbs_g": 15,
+    "fat_g": 0.2,
+    "fiber_g": 3,
+    "sodium_mg": 0,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Vitamin C boost."
+  },
+  {
+    "name": "Tiger nut",
+    "name_local": "Aya",
+    "category": "snack",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "1 handful (40 g)",
+    "serving_grams": 40,
+    "kcal": 170,
+    "protein_g": 2,
+    "carbs_g": 20,
+    "fat_g": 10,
+    "fiber_g": 4,
+    "sodium_mg": 6,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Chewy, nutty tubers."
+  },
+  {
+    "name": "Zobo",
+    "name_local": "Zobo",
+    "category": "drink",
+    "meal_slots": [
+      "snack",
+      "lunch",
+      "dinner"
+    ],
+    "serving_desc": "1 cup (240 ml)",
+    "serving_grams": 240,
+    "kcal": 60,
+    "protein_g": 0.3,
+    "carbs_g": 15,
+    "fat_g": 0.1,
+    "fiber_g": 0.5,
+    "sodium_mg": 8,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Hibiscus drink; enjoy lightly sweetened."
+  },
+  {
+    "name": "Chapman",
+    "name_local": "Chapman",
+    "category": "drink",
+    "meal_slots": [
+      "snack"
+    ],
+    "serving_desc": "1 cup (300 ml)",
+    "serving_grams": 300,
+    "kcal": 130,
+    "protein_g": 0.2,
+    "carbs_g": 32,
+    "fat_g": 0,
+    "fiber_g": 0.3,
+    "sodium_mg": 20,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Nigerian party punch — sugary, so keep it occasional."
+  },
+  {
+    "name": "Malt drink",
+    "name_local": "Malt",
+    "category": "drink",
+    "meal_slots": [
+      "snack",
+      "lunch"
+    ],
+    "serving_desc": "1 bottle (330 ml)",
+    "serving_grams": 330,
+    "kcal": 180,
+    "protein_g": 2,
+    "carbs_g": 42,
+    "fat_g": 0,
+    "fiber_g": 0.5,
+    "sodium_mg": 30,
+    "tags": [
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Sweet non-alcoholic malt."
+  },
+  {
+    "name": "Soy milk",
+    "name_local": "Soy milk",
+    "category": "drink",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "1 cup (240 ml)",
+    "serving_grams": 240,
+    "kcal": 110,
+    "protein_g": 7,
+    "carbs_g": 9,
+    "fat_g": 4.5,
+    "fiber_g": 2,
+    "sodium_mg": 90,
+    "tags": [
+      "gluten_free",
+      "high_protein",
+      "vegan"
+    ],
+    "notes": "Home-made or tinned soy milk."
+  },
+  {
+    "name": "Kunun aya",
+    "name_local": "Kunun aya",
+    "category": "drink",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "1 cup (240 ml)",
+    "serving_grams": 240,
+    "kcal": 140,
+    "protein_g": 2,
+    "carbs_g": 18,
+    "fat_g": 7,
+    "fiber_g": 3,
+    "sodium_mg": 30,
+    "tags": [
+      "gluten_free",
+      "vegan"
+    ],
+    "notes": "Tiger-nut milk, often with dates."
+  },
+  {
+    "name": "Fresh orange juice",
+    "name_local": "Orange juice",
+    "category": "drink",
+    "meal_slots": [
+      "breakfast",
+      "snack"
+    ],
+    "serving_desc": "1 cup (240 ml)",
+    "serving_grams": 240,
+    "kcal": 110,
+    "protein_g": 1.7,
+    "carbs_g": 26,
+    "fat_g": 0.5,
+    "fiber_g": 0.5,
+    "sodium_mg": 2,
+    "tags": [
+      "gluten_free",
+      "low_fat",
+      "vegan"
+    ],
+    "notes": "Squeezed fresh, no added sugar."
+  }
+]

@@ -3,9 +3,11 @@ backend/.venv/
 __pycache__/
 *.py[cod]
 
-# Application data — SQLite database (never commit)
-data/
-backend/data/
+# Application data — SQLite database (never commit).
+# Anchored to the repo root: an unanchored "data/" also matches
+# backend/app/data/, which holds the food and exercise catalogs.
+/data/
+/backend/data/
 
 # Node
 node_modules/
