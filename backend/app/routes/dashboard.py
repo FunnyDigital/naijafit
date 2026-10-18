@@ -4,8 +4,16 @@ from datetime import datetime, timedelta
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.deps import get_db, get_profile
-from app.models import MealLog, PlanMeal, PlanWorkout, WaterLog, WeightLog, WorkoutLog
+from app.deps import get_current_user, get_db, get_profile
+from app.models import (
+    MealLog,
+    PlanMeal,
+    PlanWorkout,
+    User,
+    WaterLog,
+    WeightLog,
+    WorkoutLog,
+)
 from app.serializers import meal_log_out, meal_out, targets_out, workout_out
 
 router = APIRouter(prefix="/api", tags=["dashboard"])
@@ -34,8 +42,12 @@ def _streak(logged_dates: set[str], day: str) -> int:
 
 
 @router.get("/dashboard")
-def dashboard(date: str | None = None, db: Session = Depends(get_db)):
-    profile = get_profile(db)
+def dashboard(
+    date: str | None = None,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    profile = get_profile(db, user)
     if profile is None:
         raise HTTPException(status_code=404, detail="onboarding_required")
 
@@ -45,20 +57,42 @@ def dashboard(date: str | None = None, db: Session = Depends(get_db)):
     except ValueError:
         raise HTTPException(status_code=400, detail="date must look like YYYY-MM-DD")
 
-    workout = db.query(PlanWorkout).filter(PlanWorkout.day_index == weekday).first()
+    workout = (
+        db.query(PlanWorkout)
+        .filter(PlanWorkout.user_id == user.id, PlanWorkout.day_index == weekday)
+        .first()
+    )
     meals = (
         db.query(PlanMeal)
-        .filter(PlanMeal.day_index == weekday)
+        .filter(PlanMeal.user_id == user.id, PlanMeal.day_index == weekday)
         .order_by(PlanMeal.slot, PlanMeal.id)
         .all()
     )
     meal_logs = (
-        db.query(MealLog).filter(MealLog.date == day).order_by(MealLog.logged_at).all()
+        db.query(MealLog)
+        .filter(MealLog.user_id == user.id, MealLog.date == day)
+        .order_by(MealLog.logged_at)
+        .all()
     )
-    workout_log = db.query(WorkoutLog).filter(WorkoutLog.date == day).first()
-    water = db.query(WaterLog).filter(WaterLog.date == day).first()
-    latest_weight = db.query(WeightLog).order_by(WeightLog.date.desc()).first()
-    logged_dates = {row[0] for row in db.query(WorkoutLog.date).all()}
+    workout_log = (
+        db.query(WorkoutLog)
+        .filter(WorkoutLog.user_id == user.id, WorkoutLog.date == day)
+        .first()
+    )
+    water = (
+        db.query(WaterLog)
+        .filter(WaterLog.user_id == user.id, WaterLog.date == day)
+        .first()
+    )
+    latest_weight = (
+        db.query(WeightLog)
+        .filter(WeightLog.user_id == user.id)
+        .order_by(WeightLog.date.desc())
+        .first()
+    )
+    logged_dates = {
+        row[0] for row in db.query(WorkoutLog.date).filter(WorkoutLog.user_id == user.id).all()
+    }
 
     consumed = {
         "kcal": round(sum(log.kcal for log in meal_logs), 1),

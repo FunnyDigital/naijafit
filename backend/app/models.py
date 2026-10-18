@@ -9,6 +9,7 @@ from sqlalchemy import (
     Integer,
     String,
     Text,
+    UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -19,12 +20,32 @@ def _now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+class User(Base):
+    """One account. Everything else in the app hangs off a user."""
+
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    username: Mapped[str] = mapped_column(String(50), unique=True, index=True)
+    password_hash: Mapped[str] = mapped_column(String(200))
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_now)
+    last_login_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+
+    profile: Mapped["Profile | None"] = relationship(
+        back_populates="user", cascade="all, delete-orphan", uselist=False
+    )
+
+
 class Profile(Base):
-    """The one person using the app. A single row, always id=1."""
+    """The one person using the app. A single row per user."""
 
     __tablename__ = "profile"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), unique=True, index=True
+    )
     name: Mapped[str] = mapped_column(String(120), default="Friend")
     sex: Mapped[str] = mapped_column(String(16), default="male")
     age: Mapped[int] = mapped_column(Integer, default=30)
@@ -49,9 +70,11 @@ class Profile(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_now)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_now, onupdate=_now)
 
+    user: Mapped["User"] = relationship(back_populates="profile")
+
 
 class Food(Base):
-    """A Nigerian dish or food item. Seeded, and extendable by the user."""
+    """A Nigerian dish or food item. Shared by everyone, extendable by anyone."""
 
     __tablename__ = "foods"
 
@@ -72,6 +95,26 @@ class Food(Base):
     photo_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     is_custom: Mapped[bool] = mapped_column(Boolean, default=False)
+    created_by: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+
+
+class FoodPreference(Base):
+    """A dish on (or off) someone's menu. Drives what their plan is built from."""
+
+    __tablename__ = "food_preferences"
+    __table_args__ = (UniqueConstraint("user_id", "food_id", name="uq_pref_user_food"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
+    food_id: Mapped[int] = mapped_column(ForeignKey("foods.id", ondelete="CASCADE"))
+    status: Mapped[str] = mapped_column(String(16), default="liked")
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_now)
+
+    food: Mapped["Food"] = relationship()
 
 
 class Exercise(Base):
@@ -98,6 +141,9 @@ class PlanWorkout(Base):
     __tablename__ = "plan_workouts"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
     day_index: Mapped[int] = mapped_column(Integer, index=True)
     title: Mapped[str] = mapped_column(String(120), default="Workout")
     focus: Mapped[str] = mapped_column(String(60), default="")
@@ -135,6 +181,9 @@ class PlanMeal(Base):
     __tablename__ = "plan_meals"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
     day_index: Mapped[int] = mapped_column(Integer, index=True)
     slot: Mapped[str] = mapped_column(String(16), index=True)
     food_id: Mapped[int] = mapped_column(ForeignKey("foods.id"))
@@ -147,6 +196,8 @@ class PlanMeal(Base):
     protein_g: Mapped[float] = mapped_column(Float, default=0.0)
     carbs_g: Mapped[float] = mapped_column(Float, default=0.0)
     fat_g: Mapped[float] = mapped_column(Float, default=0.0)
+    # A dish not on their menu that we're nudging them to try.
+    is_suggestion: Mapped[bool] = mapped_column(Boolean, default=False)
 
     food: Mapped["Food"] = relationship(foreign_keys=[food_id])
     paired_food: Mapped["Food | None"] = relationship(foreign_keys=[paired_food_id])
@@ -154,8 +205,12 @@ class PlanMeal(Base):
 
 class WorkoutLog(Base):
     __tablename__ = "workout_logs"
+    __table_args__ = (UniqueConstraint("user_id", "date", name="uq_workout_user_date"),)
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
     date: Mapped[str] = mapped_column(String(10), index=True)
     day_index: Mapped[int] = mapped_column(Integer, default=0)
     title: Mapped[str] = mapped_column(String(120), default="")
@@ -170,6 +225,9 @@ class MealLog(Base):
     __tablename__ = "meal_logs"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
     date: Mapped[str] = mapped_column(String(10), index=True)
     slot: Mapped[str] = mapped_column(String(16), default="meal")
     food_id: Mapped[int] = mapped_column(ForeignKey("foods.id"))
@@ -185,17 +243,25 @@ class MealLog(Base):
 
 class WeightLog(Base):
     __tablename__ = "weight_logs"
+    __table_args__ = (UniqueConstraint("user_id", "date", name="uq_weight_user_date"),)
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    date: Mapped[str] = mapped_column(String(10), unique=True, index=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
+    date: Mapped[str] = mapped_column(String(10), index=True)
     weight_kg: Mapped[float] = mapped_column(Float)
     note: Mapped[str | None] = mapped_column(String(200), nullable=True)
 
 
 class WaterLog(Base):
     __tablename__ = "water_logs"
+    __table_args__ = (UniqueConstraint("user_id", "date", name="uq_water_user_date"),)
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
     date: Mapped[str] = mapped_column(String(10), index=True)
     ml: Mapped[float] = mapped_column(Float, default=0.0)
 

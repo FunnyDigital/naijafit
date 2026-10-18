@@ -1,11 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy import inspect
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from app.config import APP_VERSION, FRONTEND_DIST, SITE_TITLE
+from app.config import APP_VERSION, DATABASE_URL, FRONTEND_DIST, SITE_TITLE
+from app.database import engine
 from app.routes import (
     admin,
+    auth,
     dashboard,
     exercises,
     foods,
@@ -17,11 +20,34 @@ from app.routes import (
 )
 from app.seed import seed_database
 
+
+def _check_schema() -> None:
+    """Fail with something readable if the database predates accounts."""
+    if not DATABASE_URL.startswith("sqlite"):
+        return
+    try:
+        inspector = inspect(engine)
+        tables = set(inspector.get_table_names())
+        if "profile" not in tables:
+            return
+        columns = {column["name"] for column in inspector.get_columns("profile")}
+    except Exception:
+        return
+
+    if "user_id" not in columns:
+        raise RuntimeError(
+            "This database was created before NaijaFit had user accounts.\n"
+            "Delete naijafit.db (and any naijafit.db-wal / naijafit.db-shm beside it) "
+            "from your data folder, then start the app again."
+        )
+
+
+_check_schema()
 seed_database()
 
 app = FastAPI(
     title=f"{SITE_TITLE} API",
-    description="Home workouts and Nigerian meal plans — profile, plans, logs.",
+    description="Home workouts and Nigerian meal plans — accounts, plans, logs.",
     version=APP_VERSION,
 )
 
@@ -33,7 +59,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-for module in (meta, options, profile, foods, exercises, plan, logs, dashboard, admin):
+for module in (
+    meta,
+    options,
+    auth,
+    profile,
+    foods,
+    exercises,
+    plan,
+    logs,
+    dashboard,
+    admin,
+):
     app.include_router(module.router)
 
 
@@ -55,9 +92,7 @@ class SpaStaticFiles(StaticFiles):
         request_path = scope.get("path", "")
         reserved = (
             request_path == "/api"
-            or request_path.startswith(
-                tuple(prefix + "/" for prefix in self.RESERVED)
-            )
+            or request_path.startswith(tuple(prefix + "/" for prefix in self.RESERVED))
             or request_path in self.RESERVED
         )
 

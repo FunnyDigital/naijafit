@@ -1,4 +1,12 @@
-from app.models import Exercise, Food, MealLog, PlanMeal, PlanWorkout, Profile, WeightLog
+from app.models import Exercise, Food, MealLog, PlanMeal, PlanWorkout, Profile, User, WeightLog
+
+
+def user_out(user: User) -> dict:
+    return {
+        "id": user.id,
+        "username": user.username,
+        "created_at": user.created_at.isoformat() if user.created_at else None,
+    }
 
 
 def food_out(food: Food | None) -> dict | None:
@@ -95,6 +103,7 @@ def meal_out(meal: PlanMeal) -> dict:
         "protein_g": meal.protein_g,
         "carbs_g": meal.carbs_g,
         "fat_g": meal.fat_g,
+        "is_suggestion": bool(meal.is_suggestion),
         "food": food_out(meal.food),
         "paired_food": food_out(meal.paired_food),
     }

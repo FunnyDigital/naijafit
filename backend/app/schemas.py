@@ -11,6 +11,20 @@ DietFlag = Literal["vegetarian", "gluten_free", "lactose_free"]
 MealSlot = Literal["breakfast", "lunch", "dinner", "snack", "extra"]
 
 
+class RegisterIn(BaseModel):
+    username: str = Field(min_length=3, max_length=50, pattern=r"^[A-Za-z0-9._-]+$")
+    password: str = Field(min_length=6, max_length=128)
+
+
+class LoginIn(BaseModel):
+    username: str = Field(min_length=1, max_length=50)
+    password: str = Field(min_length=1, max_length=128)
+
+
+class MenuIn(BaseModel):
+    status: Literal["liked", "disliked"] = "liked"
+
+
 class ProfileIn(BaseModel):
     name: str = Field(min_length=1, max_length=120)
     sex: Sex = "male"

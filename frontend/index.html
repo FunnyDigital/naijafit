@@ -2,9 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- No maximum-scale: pinch-zoom still works for anyone who needs it. The
+         "zooms in when I tap a field" problem is fixed at the source in CSS by
+         keeping every input at 16px on small screens. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#10b981" />
-    <meta name="description" content="Home workouts and Nigerian meal plans, built around your body and your goals." />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="Home workouts and Nigerian meal plans, built around your body and your goals."
+    />
+
+    <!-- Installable app -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="NaijaFit" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64.png" />
+
     <title>NaijaFit</title>
   </head>
   <body>

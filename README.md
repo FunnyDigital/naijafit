@@ -4,14 +4,16 @@ A self-hosted app for training at home and eating well on Nigerian food. Answer 
 once, and it works out your daily calories and macros, builds a week of bodyweight workouts and a
 week of Nigerian meal plans around them, then tracks what you actually do.
 
-Built with **FastAPI + SQLite** on the back end and **Vue 3 + Tailwind** on the front, packaged as
-two Docker containers so it deploys to a TrueNAS server with a single command. Locally it runs as
-one process on one address.
+It is built for a household or a small group rather than one person: anyone can create an account,
+and each account gets its own profile, targets, plan, menu and logs. Nothing is shared except the
+food library. It installs to a phone home screen like an app.
 
 ---
 
 ## What it does
 
+- **Accounts** — username and password, self-registration, no email and no third-party service.
+  Every profile, plan, menu and log belongs to exactly one account.
 - **Onboarding wizard** — seven short steps (about you, body, goal, activity, training, food,
   review). It shows the real calorie and macro numbers before you commit, computed with the same
   maths the app uses afterwards.
@@ -26,8 +28,12 @@ one process on one address.
   from a library of ~79 Nigerian dishes with per-serving nutrition. Swallows are paired with soups
   (eba + egusi, amala + gbegiri-style, pounded yam + efo riro) and every main meal gets a protein
   anchor, so the day lands near your calorie and protein targets.
+- **Your menu** — tick the Nigerian dishes you actually eat. The planner builds your week from
+  them, and occasionally slips in a dish you haven't picked, flagged **Try this**, which you can
+  keep (adding it to your menu) or swap away.
 - **Food library** — browse and search every dish, filter by category, open one for its full
-  nutrition, and add your own family dishes (they're used in future plans).
+  nutrition, and add your own family dishes. Your own dishes can be edited or deleted; the shared
+  library can't.
 - **Daily tracking** — mark workouts complete, log meals as you eat them, track water by the glass,
   and record your weight.
 - **Progress** — weight trend with your start point, calories eaten over the last 7 days against
@@ -195,10 +201,23 @@ Open <http://localhost:5173>. Vite proxies `/api` to the backend on port 8000.
 | `FRONTEND_PORT` | `8080` | Host port the site is served on (Docker only) |
 | `DATA_DIR` | `./data` | Folder holding `naijafit.db` |
 | `SITE_TITLE` | `NaijaFit` | Shown in the header and browser tab |
+| `SECRET_KEY` | — | Signs login tokens. **Set this to a long random string.** Changing it signs everyone out. |
+| `ALLOW_REGISTRATION` | `true` | Set `false` to close sign-ups once everyone has an account |
+| `MAX_USERS` | `200` | Soft ceiling on accounts, so a public URL can't be filled with junk |
+| `ACCESS_TOKEN_EXPIRE_MINUTES` | `43200` | How long a login lasts (30 days) |
+
+> **Upgrading from the single-user version:** the database schema changed. Delete `naijafit.db`
+> (and any `-wal` / `-shm` beside it) before starting — the app detects the old file and tells you
+> so rather than failing obscurely.
 
 ---
 
 ## API reference (short)
+
+Everything except `/api/site`, `/api/onboarding/options` and `/api/auth/*` needs
+`Authorization: Bearer <token>`.
+
+Auth: `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/auth/me`.
 
 Meta: `GET /api/site`, `GET /api/onboarding/options`.
 
@@ -208,13 +227,18 @@ Profile: `GET /api/profile`, `PUT /api/profile` (saves, recomputes targets and r
 Catalog: `GET /api/foods` (filter by `category`, `tag`, `slot`, `q`), `GET /api/foods/{id}`,
 `POST/PUT/DELETE /api/foods`, `GET /api/exercises` (filter by `category`, `equipment`, `level`, `q`).
 
+Menu: `GET /api/menu`, `POST /api/menu/{food_id}` (`{"status":"liked"|"disliked"}`),
+`DELETE /api/menu/{food_id}`, `GET /api/menu/suggestions?limit=6`.
+
 Plan: `GET /api/plan`, `POST /api/plan/generate`, `GET /api/plan/workout/{day_index}`,
-`GET /api/plan/meals/{day_index}`, `POST /api/plan/meals/{meal_id}/swap`.
+`GET /api/plan/meals/{day_index}`, `POST /api/plan/meals/{meal_id}/swap`,
+`POST /api/plan/meals/{meal_id}/accept` (keeps a "try this" dish).
 
 Logs: `POST/GET/DELETE /api/logs/workout`, `POST/GET/DELETE /api/logs/meal`,
 `POST/GET /api/logs/weight`, `POST/GET /api/logs/water`, `GET /api/dashboard?date=YYYY-MM-DD`.
 
-Data: `GET /api/admin/backup`, `POST /api/admin/restore`, `DELETE /api/admin/data`.
+Data (this account only): `GET /api/admin/backup`, `POST /api/admin/restore`,
+`DELETE /api/admin/data`.
 
 Full interactive docs at `/docs`.
 
@@ -263,11 +287,16 @@ naijafit/
 
 ## Notes
 
-- The app is single-user by design: one profile, one plan, one set of logs. There is no login, so
-  put it behind your reverse proxy's auth if you expose it to the internet.
+- Accounts are local to this app: usernames and bcrypt password hashes in its own SQLite file. No
+  email is collected and nothing is sent anywhere.
+- Each account's plans and logs are filtered by user at the query level, so one person's data never
+  appears in another's responses.
 - Nutrition values are per stated serving and are realistic approximations for planning, not a
   clinical database.
 - Plans are generated with a seed derived from your profile, so regenerating without changing
-  anything gives you the same week. Change a detail (or your equipment) and you get a fresh one.
-- Dinner is the same plan as lunch's categories but rotated — the plan is a guide, not a
-  prescription. Swap any dish you don't fancy; logs are always yours to edit.
+  anything gives you the same week. Change a detail (or your menu) and you get a fresh one.
+- On a phone the app is installable: open it in the browser and choose **Add to Home Screen**. It
+  then runs full-screen without browser chrome, and the shell is cached for a flaky connection —
+  the API never is, so plans and logs are always live.
+- Every form field is 16px on small screens on purpose: below that, iOS zooms the page in when the
+  field is focused. Pinch-zoom is still available for anyone who wants it.

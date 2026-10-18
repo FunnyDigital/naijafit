@@ -9,6 +9,13 @@ export const dashboardState = reactive({
   error: null,
 })
 
+export function resetDashboardState() {
+  dashboardState.loaded = false
+  dashboardState.loading = false
+  dashboardState.data = null
+  dashboardState.error = null
+}
+
 export async function loadDashboard(date = null, force = false) {
   if (dashboardState.loaded && dashboardState.data?.date === date && !force) {
     return dashboardState.data
@@ -29,5 +36,5 @@ export async function loadDashboard(date = null, force = false) {
 }
 
 export function useDashboard() {
-  return { state: dashboardState, loadDashboard }
+  return { state: dashboardState, loadDashboard, resetDashboardState }
 }

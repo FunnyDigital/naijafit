@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import { getToken } from '../services/api'
+import { checkSession, authState } from '../composables/useAuth'
 import { loadProfile } from '../composables/useProfile'
 
+import Login from '../views/Login.vue'
 import Today from '../views/Today.vue'
 import Workouts from '../views/Workouts.vue'
 import WorkoutDetail from '../views/WorkoutDetail.vue'
@@ -14,6 +17,8 @@ import Onboarding from '../views/Onboarding.vue'
 import NotFound from '../views/NotFound.vue'
 
 const routes = [
+  { path: '/login', name: 'Login', component: Login, meta: { bare: true, public: true } },
+  { path: '/onboarding', name: 'Onboarding', component: Onboarding, meta: { bare: true } },
   { path: '/', name: 'Today', component: Today },
   { path: '/workouts', name: 'Workouts', component: Workouts },
   { path: '/workouts/:day', name: 'WorkoutDetail', component: WorkoutDetail, props: true },
@@ -22,7 +27,6 @@ const routes = [
   { path: '/foods/:id', name: 'FoodDetail', component: FoodDetail, props: true },
   { path: '/progress', name: 'Progress', component: Progress },
   { path: '/profile', name: 'Profile', component: ProfileView },
-  { path: '/onboarding', name: 'Onboarding', component: Onboarding, meta: { bare: true } },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]
 
@@ -35,11 +39,21 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
-  if (to.meta.bare) return true
+  if (to.meta.public) {
+    if (getToken() && !authState.user) await checkSession()
+    if (authState.user) return { path: typeof to.query.redirect === 'string' ? to.query.redirect : '/' }
+    return true
+  }
+
+  await checkSession()
+  if (!authState.user) {
+    return { name: 'Login', query: to.fullPath === '/' ? {} : { redirect: to.fullPath } }
+  }
+
   const state = await loadProfile()
-  // If the API is unreachable, don't trap the user on the onboarding screen.
+  // If the API is unreachable, don't trap anyone on the onboarding screen.
   if (state.error) return true
-  if (!state.onboarded) {
+  if (!state.onboarded && to.name !== 'Onboarding') {
     return { name: 'Onboarding', query: { redirect: to.fullPath } }
   }
   return true

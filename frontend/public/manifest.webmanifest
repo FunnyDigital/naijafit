@@ -1,0 +1,38 @@
+{
+  "name": "NaijaFit — home workouts & Nigerian meal plans",
+  "short_name": "NaijaFit",
+  "description": "Home workouts and Nigerian meal plans, built around your body and your goals.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#fafaf9",
+  "theme_color": "#10b981",
+  "categories": ["health", "fitness", "food"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Today", "short_name": "Today", "url": "/" },
+    { "name": "Meal plan", "short_name": "Meals", "url": "/meals" },
+    { "name": "Workouts", "short_name": "Workouts", "url": "/workouts" }
+  ]
+}

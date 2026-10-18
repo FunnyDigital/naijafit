@@ -3,7 +3,24 @@
     <h1 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">Profile</h1>
     <p class="mt-1 text-sm text-ink-muted">Your details, your targets, and your data.</p>
 
-    <section v-if="profile" class="card mt-5 p-4">
+    <section class="card mt-5 p-4">
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-full bg-accent-50 text-accent-700">
+            <Icon name="user" :size="20" />
+          </span>
+          <div class="min-w-0">
+            <p class="truncate font-display text-base font-semibold text-ink">{{ username }}</p>
+            <p class="text-xs text-ink-muted">Signed in · only you can see this data</p>
+          </div>
+        </div>
+        <button class="btn-ghost btn-sm" @click="onSignOut">
+          <Icon name="logout" :size="15" /> Sign out
+        </button>
+      </div>
+    </section>
+
+    <section v-if="profile" class="card mt-4 p-4">
       <div class="flex items-start justify-between gap-3">
         <div class="flex items-center gap-3">
           <span class="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-lg font-semibold text-white">
@@ -102,7 +119,8 @@
           {{ confirmReset ? 'Tap again to erase everything' : 'Start over' }}
         </button>
         <p class="mt-2 text-xs text-ink-faint">
-          Deletes your profile, plan, logs and any dishes you added. The built-in library stays.
+          Clears your profile, plan, logs and your own dishes. The shared food library stays. Your
+          account stays — you’ll start again from onboarding.
         </p>
       </div>
     </section>
@@ -121,8 +139,9 @@ import { useRouter } from 'vue-router'
 
 import Icon from '../components/Icon.vue'
 import { api } from '../services/api'
-import { loadProfile, profileState, saveProfile } from '../composables/useProfile'
-import { loadDashboard } from '../composables/useDashboard'
+import { authState, signOut } from '../composables/useAuth'
+import { loadProfile, profileState, resetProfileState, saveProfile } from '../composables/useProfile'
+import { loadDashboard, resetDashboardState } from '../composables/useDashboard'
 import { resetForm, setFromProfile } from '../composables/useOnboarding'
 import { pushToast } from '../composables/useToast'
 import { formatHeight, formatVolume, formatWeight } from '../utils/format'
@@ -140,6 +159,16 @@ const unitOptions = [
   { value: 'metric', label: 'kg / cm' },
   { value: 'imperial', label: 'lb / ft' },
 ]
+
+const username = computed(() => authState.user?.username || 'Signed in')
+
+function onSignOut() {
+  signOut()
+  resetProfileState()
+  resetDashboardState()
+  pushToast('Signed out')
+  router.push({ name: 'Login' })
+}
 
 const profile = computed(() => profileState.profile)
 const targets = computed(() => profile.value?.targets || { calorie_target: 0, protein_g: 0, carbs_g: 0, fat_g: 0, water_ml: 0 })

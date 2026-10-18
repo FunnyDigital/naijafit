@@ -10,6 +10,14 @@ export const profileState = reactive({
   error: null,
 })
 
+export function resetProfileState() {
+  profileState.loaded = false
+  profileState.loading = false
+  profileState.profile = null
+  profileState.onboarded = false
+  profileState.error = null
+}
+
 export async function loadProfile(force = false) {
   if (profileState.loaded && !force) return profileState
   profileState.loading = true
@@ -37,5 +45,5 @@ export async function saveProfile(payload) {
 }
 
 export function useProfile() {
-  return { state: profileState, loadProfile, saveProfile }
+  return { state: profileState, loadProfile, saveProfile, resetProfileState }
 }

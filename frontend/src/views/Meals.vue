@@ -71,8 +71,18 @@
               :carbs="meal.carbs_g"
               :fat="meal.fat_g"
               :to="`/foods/${meal.food.id}`"
+              :badge="meal.is_suggestion ? 'Try this' : ''"
             >
               <template #actions>
+                <button
+                  v-if="meal.is_suggestion"
+                  class="icon-btn !text-warm"
+                  title="Keep this on my menu"
+                  :disabled="busy === meal.id"
+                  @click.prevent.stop="accept(meal)"
+                >
+                  <Icon name="circleCheck" :size="18" :stroke-width="2.1" />
+                </button>
                 <button
                   class="icon-btn"
                   title="Swap this dish"
@@ -88,7 +98,10 @@
       </div>
 
       <p class="mt-6 text-center text-xs text-ink-faint">
-        Log what you actually eat on the <RouterLink to="/" class="font-medium text-accent-700 hover:underline">Today</RouterLink> screen.
+        Log what you actually eat on the
+        <RouterLink to="/" class="font-medium text-accent-700 hover:underline">Today</RouterLink>
+        screen. Dishes marked <span class="font-semibold text-warm">Try this</span> aren’t on your
+        menu yet — tap the tick to keep them.
       </p>
     </template>
   </div>
@@ -168,6 +181,20 @@ async function swap(meal) {
     const index = meals.value.findIndex((item) => item.id === meal.id)
     if (index !== -1) meals.value[index] = updated
     pushToast(`Swapped for ${updated.food.name}`, 'success')
+  } catch (error) {
+    pushToast(error.message, 'error')
+  } finally {
+    busy.value = null
+  }
+}
+
+async function accept(meal) {
+  busy.value = meal.id
+  try {
+    const updated = await api.acceptSuggestion(meal.id)
+    const index = meals.value.findIndex((item) => item.id === meal.id)
+    if (index !== -1) meals.value[index] = updated
+    pushToast(`${updated.food.name} added to your menu`, 'success')
   } catch (error) {
     pushToast(error.message, 'error')
   } finally {

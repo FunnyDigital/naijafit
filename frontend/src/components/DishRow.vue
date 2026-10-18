@@ -14,7 +14,13 @@
         <div class="flex items-center gap-2">
           <p class="truncate text-sm font-semibold text-ink">{{ food.name }}</p>
           <span
-            v-if="slot"
+            v-if="badge"
+            class="shrink-0 rounded-full bg-warm-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-warm"
+          >
+            {{ badge }}
+          </span>
+          <span
+            v-else-if="slot"
             class="shrink-0 rounded-full bg-accent-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent-700"
           >
             {{ slot }}
@@ -56,6 +62,7 @@ defineProps({
   carbs: { type: Number, default: null },
   fat: { type: Number, default: null },
   slot: { type: String, default: '' },
+  badge: { type: String, default: '' },
   size: { type: String, default: 'md' },
   to: { type: [String, Object], default: null },
 })

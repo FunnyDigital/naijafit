@@ -99,7 +99,9 @@
         <section v-reveal="30" class="card p-4">
           <div class="flex items-center gap-4">
             <StatRing :value="consumed.kcal" :max="targets.calorie_target" :size="132">
-              <span class="font-display text-2xl font-semibold text-ink">{{ Math.abs(remaining) }}</span>
+              <span class="font-display text-2xl font-semibold text-ink">
+                <CountUp :value="Math.abs(remaining)" />
+              </span>
               <span class="text-[10px] uppercase tracking-wide text-ink-muted">
                 {{ remaining >= 0 ? 'kcal left' : 'kcal over' }}
               </span>
@@ -185,9 +187,19 @@
                 :carbs="meal.carbs_g"
                 :fat="meal.fat_g"
                 :to="`/foods/${meal.food.id}`"
+                :badge="meal.is_suggestion ? 'Try this' : ''"
                 size="sm"
               >
                 <template #actions>
+                  <button
+                    v-if="meal.is_suggestion"
+                    class="icon-btn !text-warm"
+                    title="Keep this on my menu"
+                    :disabled="busyMeal === meal.id"
+                    @click.prevent.stop="acceptSuggestion(meal)"
+                  >
+                    <Icon name="circleCheck" :size="18" :stroke-width="2.1" />
+                  </button>
                   <button
                     class="icon-btn"
                     title="Swap this dish"
@@ -225,6 +237,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 
+import CountUp from '../components/CountUp.vue'
 import DishRow from '../components/DishRow.vue'
 import EmptyState from '../components/EmptyState.vue'
 import Icon from '../components/Icon.vue'
@@ -352,6 +365,19 @@ async function swapMeal(meal) {
     const updated = await api.swapMeal(meal.id)
     await refresh(true)
     pushToast(`Swapped for ${updated.food.name}`, 'success')
+  } catch (err) {
+    pushToast(err.message, 'error')
+  } finally {
+    busyMeal.value = null
+  }
+}
+
+async function acceptSuggestion(meal) {
+  busyMeal.value = meal.id
+  try {
+    await api.acceptSuggestion(meal.id)
+    await refresh(true)
+    pushToast(`${meal.food.name} added to your menu`, 'success')
   } catch (err) {
     pushToast(err.message, 'error')
   } finally {

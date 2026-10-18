@@ -6,10 +6,19 @@
       <li v-for="tab in tabs" :key="tab.name">
         <RouterLink
           :to="tab.to"
-          class="flex flex-col items-center gap-1 px-1 pb-2 pt-2.5 text-[11px] font-medium transition-colors"
+          class="relative flex flex-col items-center gap-1 px-1 pb-2 pt-2.5 text-[11px] font-medium transition-colors duration-200"
           :class="isActive(tab) ? 'text-accent-700' : 'text-ink-muted'"
         >
-          <Icon :name="tab.icon" :size="21" :stroke-width="isActive(tab) ? 2.1 : 1.75" />
+          <span
+            class="absolute inset-x-4 top-0 h-0.5 origin-center rounded-full bg-accent transition-transform duration-300"
+            :class="isActive(tab) ? 'scale-x-100' : 'scale-x-0'"
+          />
+          <span
+            class="transition-transform duration-300"
+            :class="isActive(tab) ? '-translate-y-px scale-110' : ''"
+          >
+            <Icon :name="tab.icon" :size="21" :stroke-width="isActive(tab) ? 2.2 : 1.75" />
+          </span>
           {{ tab.label }}
         </RouterLink>
       </li>

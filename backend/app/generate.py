@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from app.mealplanner import generate_meals
-from app.models import PlanMeal, PlanWorkout, PlanWorkoutItem
+from app.models import FoodPreference, PlanMeal, PlanWorkout, PlanWorkoutItem, User
 from app.nutrition import compute_targets
 from app.workoutplanner import generate_plan
 
@@ -25,10 +25,19 @@ def apply_targets(profile) -> None:
     profile.water_ml = targets.water_ml
 
 
-def regenerate_plan(db: Session, profile) -> None:
-    """Wipe the current plan and build a fresh workout + meal plan."""
-    db.query(PlanMeal).delete()
-    db.query(PlanWorkout).delete()
+def liked_food_ids(db: Session, user_id: int) -> set[int]:
+    rows = (
+        db.query(FoodPreference.food_id)
+        .filter(FoodPreference.user_id == user_id, FoodPreference.status == "liked")
+        .all()
+    )
+    return {row[0] for row in rows}
+
+
+def regenerate_plan(db: Session, user: User, profile) -> None:
+    """Wipe this person's plan and build a fresh one from their menu."""
+    db.query(PlanMeal).filter(PlanMeal.user_id == user.id).delete()
+    db.query(PlanWorkout).filter(PlanWorkout.user_id == user.id).delete()
     db.commit()
     # Drop the old plan rows from the session so the new ones don't clash on id.
     for obj in list(db.identity_map.values()):
@@ -36,7 +45,11 @@ def regenerate_plan(db: Session, profile) -> None:
             db.expunge(obj)
 
     for workout in generate_plan(db, profile):
+        workout.user_id = user.id
         db.add(workout)
-    for meal in generate_meals(db, profile):
+
+    for meal in generate_meals(db, profile, liked_food_ids(db, user.id)):
+        meal.user_id = user.id
         db.add(meal)
+
     db.commit()

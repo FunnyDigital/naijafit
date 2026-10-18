@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.deps import get_db
-from app.models import Exercise
+from app.deps import get_current_user, get_db
+from app.models import Exercise, User
 from app.serializers import exercise_out
 
 router = APIRouter(prefix="/api", tags=["exercises"])
@@ -14,6 +14,7 @@ def list_exercises(
     equipment: str | None = None,
     level: str | None = None,
     q: str | None = None,
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
     query = db.query(Exercise)
@@ -37,8 +38,10 @@ def list_exercises(
 
 
 @router.get("/exercises/{exercise_id}")
-def read_exercise(exercise_id: int, db: Session = Depends(get_db)):
+def read_exercise(
+    exercise_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)
+):
     exercise = db.get(Exercise, exercise_id)
     if exercise is None:
-        return {"error": "Exercise not found"}
+        raise HTTPException(status_code=404, detail="Exercise not found")
     return exercise_out(exercise)
