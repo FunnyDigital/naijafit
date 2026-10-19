@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { getToken } from '../services/api'
-import { checkSession, authState } from '../composables/useAuth'
+import { authState, checkSession } from '../composables/useAuth'
 import { loadProfile } from '../composables/useProfile'
 
 import Login from '../views/Login.vue'
@@ -39,20 +38,27 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
+  // checkSession() resolves once and then short-circuits, so this is cheap on
+  // every navigation and can't race itself.
+  await checkSession()
+
   if (to.meta.public) {
-    if (getToken() && !authState.user) await checkSession()
-    if (authState.user) return { path: typeof to.query.redirect === 'string' ? to.query.redirect : '/' }
+    if (authState.user) {
+      return { path: typeof to.query.redirect === 'string' ? to.query.redirect : '/' }
+    }
     return true
   }
 
-  await checkSession()
   if (!authState.user) {
     return { name: 'Login', query: to.fullPath === '/' ? {} : { redirect: to.fullPath } }
   }
 
   const state = await loadProfile()
-  // If the API is unreachable, don't trap anyone on the onboarding screen.
-  if (state.error) return true
+
+  // Server unreachable and nothing cached: let the screen show its own error
+  // rather than bouncing somebody through setup again.
+  if (state.error && !state.profile) return true
+
   if (!state.onboarded && to.name !== 'Onboarding') {
     return { name: 'Onboarding', query: { redirect: to.fullPath } }
   }

@@ -105,12 +105,12 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import Icon from '../components/Icon.vue'
-import { checkSession, login, register } from '../composables/useAuth'
-import { loadProfile, resetProfileState } from '../composables/useProfile'
+import { login, register } from '../composables/useAuth'
+import { loadProfile } from '../composables/useProfile'
 import { resetDashboardState } from '../composables/useDashboard'
 import { pushToast } from '../composables/useToast'
 
@@ -155,24 +155,21 @@ async function submit() {
       await register(username.value.trim(), password.value)
       pushToast(`Welcome, ${username.value.trim()}`, 'success')
     }
-    // A brand new account still needs to answer the onboarding questions.
+
     resetDashboardState()
-    await loadProfile(true)
-    if (route.query.redirect) router.push(String(route.query.redirect))
-    else router.push(profileReady.value ? '/' : '/onboarding')
+    const state = await loadProfile(true)
+
+    const redirect = typeof route.query.redirect === 'string' ? route.query.redirect : null
+    if (redirect) router.push(redirect)
+    else if (state.onboarded) router.push('/')
+    // A failed fetch is not the same as "no profile" — land on Today and let
+    // the app retry rather than dragging someone through setup again.
+    else if (state.error) router.push('/')
+    else router.push('/onboarding')
   } catch (err) {
     error.value = err.message
   } finally {
     busy.value = false
   }
 }
-
-const profileReady = ref(false)
-
-onMounted(async () => {
-  await checkSession()
-  resetProfileState()
-  const state = await loadProfile(true)
-  profileReady.value = !!state.onboarded
-})
 </script>
